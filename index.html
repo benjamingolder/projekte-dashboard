@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projekte Dashboard für Benjamin & Anna - Übersicht über alle laufenden Projekte und Aufgaben">
+    <meta name="keywords" content="Projektmanagement, Dashboard, Benjamin, Anna, Projekte">
+    <meta name="author" content="Benjamin & Anna">
+    <meta property="og:title" content="Projekte Dashboard - Benjamin & Anna">
+    <meta property="og:description" content="Übersicht über alle laufenden Projekte und Aufgaben">
+    <meta property="og:type" content="website">
     <title>🚀 Projekte Dashboard - Benjamin & Anna</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <style>
         * {
             margin: 0;
@@ -212,6 +219,9 @@
         <div class="hero">
             <h1>🚀 Projekte Dashboard</h1>
             <p>Benjamin & Anna - Zusammen halten wir den Überblick!</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #95a5a6;">
+                <span id="current-time"></span> • Zuletzt aktualisiert: <span id="last-update"></span>
+            </p>
         </div>
         
         <div class="stats">
@@ -321,5 +331,34 @@
             <a href="https://golders123.sharepoint.com/sites/projekte_golders/Shared%20Documents/Dashboard.html" class="quick-link">📊 Dashboard anzeigen</a>
         </div>
     </div>
+
+    <script>
+        // Aktuelle Uhrzeit anzeigen
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('de-CH');
+            const dateString = now.toLocaleDateString('de-CH');
+            document.getElementById('current-time').textContent = `${dateString} ${timeString}`;
+        }
+
+        // Zuletzt aktualisiert Zeitstempel
+        function setLastUpdate() {
+            const now = new Date();
+            const updateString = now.toLocaleString('de-CH');
+            document.getElementById('last-update').textContent = updateString;
+        }
+
+        // Initial aufrufen
+        updateTime();
+        setLastUpdate();
+
+        // Jede Sekunde aktualisieren
+        setInterval(updateTime, 1000);
+
+        // Alle 5 Minuten neu laden für aktuelle Daten
+        setTimeout(function() {
+            location.reload();
+        }, 300000); // 5 Minuten
+    </script>
 </body>
 </html>
